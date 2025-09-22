@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0f1a;
+  --color-card: #0f1526;
+  --color-muted: #9aa4bf;
+  --radius-xl: 1.25rem;
+}
+
+/* Gradient glow helper */
+.glow {
+  position: relative;
+}
+.glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    80% 80% at 20% 20%,
+    rgba(99, 102, 241, 0.35) 0%,
+    rgba(147, 51, 234, 0.2) 35%,
+    rgba(59, 130, 246, 0.15) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(28px);
+  z-index: -1;
+}
+
+.mesh-bg {
+  background-image: radial-gradient(
+      1200px 600px at 50% -10%,
+      rgba(99, 102, 241, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 400px at 90% 10%,
+      rgba(147, 51, 234, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 400px at 10% 20%,
+      rgba(56, 189, 248, 0.15),
+      transparent 60%
+    ),
+    linear-gradient(180deg, rgba(14, 18, 33, 0.4), rgba(11, 15, 26, 0.9));
+}
+
+.card {
+  @apply rounded-2xl bg-[var(--color-card)]/70 backdrop-blur border border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.55)] transition-shadow;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-500 hover:opacity-95 active:opacity-90 shadow-[0_10px_30px_rgba(99,102,241,0.35)] transition;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium text-indigo-300 hover:text-white border border-indigo-500/30 hover:border-indigo-400/50 bg-indigo-500/5 hover:bg-indigo-500/10 transition;
+}
+
+.section {
+  @apply relative py-20 md:py-28;
+}
+
+.section-title {
+  @apply text-3xl md:text-5xl font-bold tracking-tight text-white;
+}
+
+.section-subtitle {
+  @apply text-[var(--color-muted)] max-w-2xl;
+}
