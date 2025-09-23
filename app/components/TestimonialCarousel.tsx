@@ -64,6 +64,7 @@ function Row({
 }) {
   // Duplicate items to create infinite loop illusion
   const loopItems = useMemo(() => [...items, ...items], [items]);
+  type StyleWithVar = React.CSSProperties & { "--speed"?: string };
 
   return (
     <div className={styles.row}>
@@ -71,7 +72,7 @@ function Row({
         className={`${styles.track} ${
           reverse ? styles.animateRight : styles.animateLeft
         }`}
-        style={{ ["--speed" as any]: `${speed}s` }}
+        style={{ "--speed": `${speed}s` } as StyleWithVar}
       >
         {loopItems.map((t, idx) => (
           <div key={`${t.id}-${idx}`} className={styles.card}>

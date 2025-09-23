@@ -14,7 +14,7 @@ export default function Page() {
             <BlackHole className="pointer-events-none absolute inset-0 h-full w-full" />
             <div className="relative z-[1] p-8 sm:p-12 md:p-16 text-center">
               <div className="mx-auto mb-6 w-fit rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1 text-xs text-indigo-300">
-                We've announced AI X+ GenKit 0.9 — check it out
+                We&apos;ve announced AI X+ GenKit 0.9 — check it out
               </div>
               <h1 className="section-title">
                 The easiest way to power up your business with AI

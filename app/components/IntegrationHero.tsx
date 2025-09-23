@@ -111,8 +111,13 @@ export default function IntegrationHero({
         {/* Bubbles absolute on md+, grid on mobile */}
         <div aria-hidden className="hidden md:block">
           {gridIcons.map((item, i) => {
-            const pos = layoutMap[i % layoutMap.length] as any;
-            const depth = pos.depth as number;
+            const pos = layoutMap[i % layoutMap.length] as {
+              top?: string;
+              bottom?: string;
+              left?: string;
+              right?: string;
+              depth: number;
+            };
             const Icon = item.Icon;
             const duration = 6 + ((i * 37) % 4); // 6–9s
             const s = sizePx[item.size];

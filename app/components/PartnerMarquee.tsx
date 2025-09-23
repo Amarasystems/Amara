@@ -22,6 +22,7 @@ export default function PartnerMarquee({
   className?: string;
 }) {
   const doubled = useMemo(() => [...items, ...items], [items]);
+  type StyleWithVar = React.CSSProperties & { "--marquee-duration"?: string };
 
   // Convert pixels-per-second to duration using an approximate item-strip width.
   // We animate exactly one strip width (50%) per cycle, so duration scales with speed.
@@ -34,7 +35,7 @@ export default function PartnerMarquee({
   return (
     <div
       className={`marquee marquee-mask pause-on-hover ${className}`}
-      style={{ ["--marquee-duration" as any]: `${durationSec}s` }}
+      style={{ "--marquee-duration": `${durationSec}s` } as StyleWithVar}
     >
       <div className={`marquee-track ${trackClass}`}>
         {doubled.map((item, i) => {
