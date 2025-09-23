@@ -1,5 +1,8 @@
 import React from "react";
 import BlackHole from "./components/BlackHole";
+import TestimonialCarousel from "./components/TestimonialCarousel";
+import TrustedBy from "./components/TrustedBy";
+import IntegrationHero from "./components/IntegrationHero";
 
 export default function Page() {
   return (
@@ -11,7 +14,7 @@ export default function Page() {
             <BlackHole className="pointer-events-none absolute inset-0 h-full w-full" />
             <div className="relative z-[1] p-8 sm:p-12 md:p-16 text-center">
               <div className="mx-auto mb-6 w-fit rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1 text-xs text-indigo-300">
-                We’ve announced AI X+ GenKit 0.9 — check it out
+                We've announced AI X+ GenKit 0.9 — check it out
               </div>
               <h1 className="section-title">
                 The easiest way to power up your business with AI
@@ -93,37 +96,11 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Integrations */}
-      <section id="learn-more" className="section">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold text-white">
-            Connect with your favorite apps
-          </h2>
-          <p className="section-subtitle mx-auto mt-3">
-            Drop‑in integrations with your existing stack. Configure, not code.
-          </p>
-          <div className="relative mx-auto mt-10 grid max-w-3xl grid-cols-5 gap-6">
-            {["facebook", "linkedin", "youtube", "discord", "vercel"].map(
-              (name, idx) => (
-                <div key={name + idx} className="group relative">
-                  <div className="glow" />
-                  <div className="card flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 hover:bg-white/10">
-                    {/* using existing public svgs as placeholders */}
-                    <img
-                      src={`/${name === "vercel" ? "vercel" : "next"}.svg`}
-                      alt={name}
-                      className="h-7 w-7 opacity-90"
-                    />
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-          <a href="#features" className="mt-8 inline-block btn-ghost">
-            Browse all integrations
-          </a>
-        </div>
-      </section>
+      {/* Social Marketing Channels */}
+      <IntegrationHero />
+
+      {/* Trusted By */}
+      <TrustedBy />
 
       {/* Features */}
       <section id="features" className="section">
@@ -162,28 +139,8 @@ export default function Page() {
           <h2 className="section-title text-center text-3xl md:text-4xl">
             Hear what our customers say
           </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="card p-6">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={`https://i.pravatar.cc/80?img=${i}`}
-                    alt="avatar"
-                    className="h-10 w-10 rounded-full"
-                  />
-                  <div>
-                    <div className="text-sm font-semibold">John Carter</div>
-                    <div className="text-xs text-slate-400">
-                      Head of Ops — Nova
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-4 text-sm text-slate-300">
-                  “AI X+ helped us ship automations 5× faster. Our weekly
-                  reporting now runs itself.”
-                </p>
-              </div>
-            ))}
+          <div className="mt-10">
+            <TestimonialCarousel />
           </div>
         </div>
       </section>

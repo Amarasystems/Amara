@@ -1,0 +1,165 @@
+.section {
+  background: #0b0f1a;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.container {
+  position: relative;
+  padding: 32px 16px;
+}
+
+.mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 320px;
+  background: rgba(13, 19, 39, 0.8);
+  border-radius: 16px;
+  padding: 16px;
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  transition: transform 220ms ease, filter 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.4),
+    rgba(56, 189, 248, 0.25)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 9999px;
+}
+
+.name {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+}
+
+.username {
+  font-size: 12px;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.text {
+  margin-top: 12px;
+  font-size: 14px;
+  color: rgba(226, 232, 240, 0.9);
+}
+
+/* Dimming and highlight states */
+/* Removed center highlight/dim effect */
+
+/* Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animateLeft {
+  animation: scroll-left var(--speed, 40s) linear infinite;
+}
+
+.animateRight {
+  animation: scroll-right var(--speed, 40s) linear infinite;
+}
+
+/* Mobile: switch to single-row swipe, disable keyframes */
+@media (max-width: 767px) {
+  .mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .scrollContainer {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scrollContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    scroll-snap-align: center;
+  }
+
+  .animateLeft,
+  .animateRight {
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 48px 24px;
+  }
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  .animateLeft,
+  .animateRight {
+    animation: none;
+  }
+}
